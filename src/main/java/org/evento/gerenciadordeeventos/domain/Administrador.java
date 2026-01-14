@@ -3,6 +3,8 @@ package org.evento.gerenciadordeeventos.domain;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,6 +31,7 @@ public class Administrador {
 	private LocalDateTime dataCriacao = LocalDateTime.now();
 	
 	@OneToMany(mappedBy = "administrador", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Evento> eventos;
 
 	public Administrador(Long id, String nome, String email, String senha, LocalDateTime dataCriacao, List<Evento> eventos) {
