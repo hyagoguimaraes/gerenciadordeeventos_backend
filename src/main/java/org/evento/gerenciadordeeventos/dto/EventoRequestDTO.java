@@ -2,15 +2,38 @@ package org.evento.gerenciadordeeventos.dto;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+
 public class EventoRequestDTO {
+	
+	@NotBlank(message = "Nome é obrigatório")
 	public String nome;
+	
+	@NotNull(message = "Data é obrigatória")
 	public LocalDate data;
+	
+	@NotBlank(message = "CEP é obrigatório")
+    @Pattern(regexp = "\\d{5}-\\d{3}", message = "CEP deve estar no formato 00000-000")
 	public String cep;
+	
+	@NotBlank(message = "Logradouro é obrigatório")
 	public String logradouro;
+	
+	@NotBlank(message = "Número é obrigatório")
 	public String numero;
+	
+	@NotBlank(message = "Bairro é obrigatório")
 	public String bairro;
+	
+	@NotBlank(message = "Cidade é obrigatória")
 	public String cidade;
+	
+	@NotBlank(message = "UF é obrigatória")
 	public String uf;
+	
+	@NotBlank(message = "A imagem é obrigatória")
 	public String imagem;
 	
 	public String getNome() {
