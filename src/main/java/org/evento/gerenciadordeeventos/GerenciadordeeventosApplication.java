@@ -9,5 +9,4 @@ public class GerenciadordeeventosApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GerenciadordeeventosApplication.class, args);
 	}
-
 }

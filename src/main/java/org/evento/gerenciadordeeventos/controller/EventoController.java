@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/eventos")
 public class EventoController {
@@ -34,7 +36,7 @@ public class EventoController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Evento criar(@RequestParam Long adminId, @RequestBody EventoRequestDTO eventoRequestDTO) {
+	public Evento criar(@RequestParam Long adminId, @Valid @RequestBody EventoRequestDTO eventoRequestDTO) {
 		return eventoService.criarEvento(eventoRequestDTO, adminId);
 	}
 	
