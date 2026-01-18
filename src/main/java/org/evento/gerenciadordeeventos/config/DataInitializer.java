@@ -23,7 +23,7 @@ public class DataInitializer {
                 Administrador admininistrador = new Administrador();
                 admininistrador.setNome("Administrador");
                 admininistrador.setEmail(email);
-                admininistrador.setSenha(passwordEncoder.encode("123456"));
+                admininistrador.setSenha(passwordEncoder.encode("Admin@123"));
 
                 administradorRepository.save(admininistrador);
 
