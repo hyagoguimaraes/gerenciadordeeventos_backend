@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -20,7 +22,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/register")
-	public void register (@RequestBody AdminRequestDTO adminRequestDTO) {
+	public void register (@Valid @RequestBody AdminRequestDTO adminRequestDTO) {
 		authService.register(adminRequestDTO);
 	}
 	
