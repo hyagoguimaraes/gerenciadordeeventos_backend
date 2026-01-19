@@ -34,14 +34,16 @@ public class AuthService {
 	
 	//Função confirmar o login do usuário no sistema sempre que ele tentar entrar, o login
 	public LoginResponseDTO loginResponseDTO(LoginRequestDTO loginRequestDTO) {
-		Administrador administrador = administradorRepository.findByEmail(loginRequestDTO.email)
-				.orElseThrow(() -> new RuntimeException("Usuário não encontrado!"));
-		
-		if (!passwordEncoder.matches(loginRequestDTO.senha, administrador.getSenha())) {
-			throw new RuntimeException ("Credenciais inválidas! Tente novamente.");
-		}
-		
-		String token = jwtUtil.gerarToken(administrador.getEmail());
-		return new LoginResponseDTO(token, administrador.getId());
+	    Administrador administrador = administradorRepository.findByEmail(loginRequestDTO.email)
+	            .orElseThrow(() -> new RuntimeException("Usuário não encontrado!"));
+	    
+	    if (!passwordEncoder.matches(loginRequestDTO.senha, administrador.getSenha())) {
+	        throw new RuntimeException ("Credenciais inválidas! Tente novamente.");
+	    }
+	    
+	    String token = jwtUtil.gerarToken(administrador.getEmail());
+	    
+	    // CORREÇÃO AQUI: Primeiro Nome, depois Token
+	    return new LoginResponseDTO(administrador.getNome(), token, administrador.getId());
 	}
 }
